@@ -1,0 +1,46 @@
+2008-03-03  Apurva Mehta  <apurva@mathmeth.com>
+
+	* include/blockfs_utils.h : Put necessary the parenthesis around
+	the caching macros. The absence of parenthesis was causing the
+	caching problems.
+
+2008-01-15  Apurva Mehta  <apurva@mathmeth.com>
+
+	* src/utils.c (get_size): Cleaned up some error messages
+	(blockfs_calc_and_store_sizes): Changed the size computations so
+	that they now round down rather than round up. As a result, we can
+	now successfully create and use an ext2 filesystem on a blockfs
+	volume.
+
+2007-11-28  Apurva Mehta  <apurva@mathmeth.com>
+
+	* src/read.c: Re-wrote the read module so that it now works
+	without the assumption that the read offsets will be on block
+	boundaries, and that the read size will be multiples of the block
+	size.
+
+	* include/blockfs.h : Added the CACHE_SLOT_NUM macro.
+
+	* src/read.c : Updated variable name cache_block_num to
+	cache_slot_num to make the code more comprehensible. Updated the
+	code to make use of the new address translation macros.
+
+2007-11-27  Apurva Mehta  <apurva@mathmeth.com>
+
+	* src/write.c: Implemented the write module
+
+	* src/read.c: Commented out locking code as it has been decided to
+	ignore synchronization issues for the time being.
+
+2007-11-23  Apurva Mehta  <apurva@mathmeth.com>
+
+	* include/blockfs_locks.h: Cleaned up the comments.
+
+	* src/read.c (update_block): Removed the magic numbers and used the 
+	new tunable macros wherever relevant.
+
+	* include/blockfs.h: Added macros to serve as tunables to the
+	caching algorithm.
+
+	* src/read.c: Cleaned up the comments a bit. 
+
